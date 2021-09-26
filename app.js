@@ -9,11 +9,14 @@ var notesRouter = require('./app/routes/notes');
 
 var app = express();
 
+app.use(cors({ 
+  origin: 'https://mynotes-front.netlify.app'
+}));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
 
 
 app.use('/users', usersRouter);
