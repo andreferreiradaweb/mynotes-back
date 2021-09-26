@@ -9,9 +9,12 @@ var notesRouter = require('./app/routes/notes');
 
 var app = express();
 
-app.use(cors({ 
-  origin: '*'
-}));
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(cors());
+    next();
+});
 
 app.use(logger('dev'));
 app.use(express.json());
