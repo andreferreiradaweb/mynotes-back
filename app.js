@@ -10,7 +10,7 @@ var notesRouter = require('./app/routes/notes');
 var app = express();
 
 app.use(cors({ 
-  origin: 'https://mynotes-front.netlify.app'
+  origin: '*'
 }));
 
 app.use(logger('dev'));
