@@ -23,6 +23,8 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     let user = await User.findOne({ email });
     if(!user)
       res.status(401).json({error: 'Incorrect email or passowrd'});
