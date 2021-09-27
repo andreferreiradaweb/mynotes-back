@@ -7,14 +7,14 @@ const cors = require('cors');
 var usersRouter = require('./app/routes/users');
 var notesRouter = require('./app/routes/notes');
 
-var app = express();
-app.use(cors());
+var corsOptions = {
+  origin: 'https://mynotes-front.netlify.app',
+  optionSuccessStatus: 200,
+  methods: 'GET, PUT, DELETE, POST'
+}
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+var app = express();
+app.use(cors(corsOptions));
 
 app.use(logger('dev'));
 app.use(express.json());
